@@ -1,9 +1,10 @@
 let result=0
 let computerScore=0
 let playerScore=0
-
+let score=document.querySelector('.score')
 let buttons=document.querySelectorAll('button')
 let output=document.querySelector('.output')
+score.innerText= `playerScore: ${playerScore} ComputerScore:${computerScore}`
 function playRound(playerSelection,computerSelection) {
     
     const ps=playerSelection.toUpperCase();
@@ -27,8 +28,25 @@ function playRound(playerSelection,computerSelection) {
         output.appendChild(p)
     }
     
-    
   }
+function scores(playerScore,computerScore){
+    score.innerText= `playerScore: ${playerScore} ComputerScore:${computerScore}`
+}
+function chooseWinner(playerScore,computerScore){
+    let h1=document.createElement('h1')
+    if(computerScore==5){
+        
+        h1.innerText=` ${computerScore}:${playerScore} U lost the game`
+        
+        
+    }
+    else if(playerScore==5){
+        h1.innerText=`${playerScore}:${computerScore} U won the game`
+        
+    }
+    
+    output.appendChild(h1)
+}
 let options=["rock","paper","scissors"]
 function getComputerChoice(){
     return options[Math.floor(Math.random()*3)]
@@ -38,7 +56,14 @@ function game(){
         button.addEventListener("click",function(){
             let playerSelection=`${(this.textContent)}`
             let computerSelection= getComputerChoice();
-            playRound(playerSelection,computerSelection)
+            
+            playRound(playerSelection,computerSelection);
+            scores(playerScore,computerScore)
+            chooseWinner(playerScore,computerScore)
+            if(playerScore==5 || computerScore==5){
+                playerScore=0
+                computerScore=0
+            }
         })  
     })
 }
@@ -53,4 +78,4 @@ function game(){
 //    result="its a tie"
 //}
 //return result
-(game())
+game()
