@@ -1,2 +1,2 @@
 # Rock-paper-scisssors
-This repo is about rock paper scissors game. As of now its just an amateur repo. 
+This project is all about clasic rock paper scissors game. This game doesn't have any css styles, its just vanilla js and html.
